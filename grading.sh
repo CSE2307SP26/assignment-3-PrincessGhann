@@ -34,3 +34,8 @@ while read -r key; do
 
         echo "${key} ${score}"
         cd ..
+        if [ -f "$output" ]; then
+                if diff -q "$output" "$expected" > /dev/null; then
+                    score=100
+                else
+                    score=0
